@@ -7,11 +7,11 @@ public class LangRepository {
 
     LangRepository() {
         languages = new ArrayList<>();
-        languages.add(new Lang(1L, "Hello", "en"));
-        languages.add(new Lang(2L, "Witaj", "pl"));
+        languages.add(new Lang(1, "Hello", "en"));
+        languages.add(new Lang(2, "Witaj", "pl"));
     }
 
-    Optional<Lang> findById(Long id) {
+    Optional<Lang> findById(Integer id) {
         return languages.stream()
                 .filter(lang -> lang.getId().equals(id))
                 .findFirst();
