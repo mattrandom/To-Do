@@ -8,13 +8,25 @@
           crossorigin="anonymous">
 </head>
 <body>
-    <form class="pure-form" style="width: 40%; margin: 0 auto">
+    <form id="welcome" class="pure-form" style="width: 40%; margin: 0 auto">
         <input type="text" name="name" class="pure-input-rounded" placeholder="name"/>
         <label class="pure-radio">
             <input type="radio" name="lang" value="1" checked="" /> 🇺🇸</label>
         <label class="pure-radio">
             <input type="radio" name="lang" value="2" /> 🇵🇱</label>
-        <button class="pure-button pure-button-primary">Submit</button>
+        <button id="btn" class="pure-button pure-button-primary">Submit</button>
     </form>
+    <script>
+        const form = document.getElementById('welcome');
+        document.getElementById('btn').addEventListener('click', (event) => {
+            event.preventDefault();
+            const formObj = {
+                name: form.elements.name.value,
+                lang: form.elements.lang.value
+            };
+            alert(new URLSearchParams(formObj));
+        });
+    </script>
 </body>
 </html>
+
