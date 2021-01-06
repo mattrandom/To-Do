@@ -1,3 +1,6 @@
+package io.github.mattrandom.lang;
+
+import io.github.mattrandom.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -18,7 +21,7 @@ public class LangRepository {
         return result;
     }
 
-    Optional<Lang> findById(Integer id) {
+    public Optional<Lang> findById(Integer id) {
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction transaction = session.beginTransaction();
 

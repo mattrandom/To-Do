@@ -120,7 +120,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>Main</mainClass>
+                            <mainClass>io.github.mattrandom.Main</mainClass>
                         </manifest>
                     </archive>
                 </configuration>

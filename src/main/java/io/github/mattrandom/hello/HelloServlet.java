@@ -1,3 +1,5 @@
+package io.github.mattrandom.hello;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

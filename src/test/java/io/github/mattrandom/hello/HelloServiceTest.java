@@ -1,3 +1,7 @@
+package io.github.mattrandom.hello;
+
+import io.github.mattrandom.lang.Lang;
+import io.github.mattrandom.lang.LangRepository;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -45,7 +49,7 @@ public class HelloServiceTest {
         // given
         LangRepository repositoryMock = new LangRepository() {
             @Override
-            Optional<Lang> findById(Integer id) {
+            public Optional<Lang> findById(Integer id) {
                 return Optional.empty();
             }
         };
@@ -89,7 +93,7 @@ public class HelloServiceTest {
     private LangRepository fallbackLangIdRepository() {
         return new LangRepository() {
             @Override
-            Optional<Lang> findById(Integer id) {
+            public Optional<Lang> findById(Integer id) {
                 if (id.equals(HelloService.FALLBACK_LANG.getId())) {
                     return Optional.of(new Lang(null, FALLBACK_ID_WELCOME, null));
                 }

@@ -1,3 +1,7 @@
+package io.github.mattrandom.hello;
+
+import io.github.mattrandom.lang.Lang;
+import io.github.mattrandom.lang.LangRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

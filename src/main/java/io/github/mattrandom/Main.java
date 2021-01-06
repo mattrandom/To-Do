@@ -1,3 +1,5 @@
+package io.github.mattrandom;
+
 import org.eclipse.jetty.annotations.AnnotationConfiguration;
 import org.eclipse.jetty.plus.webapp.EnvConfiguration;
 import org.eclipse.jetty.plus.webapp.PlusConfiguration;
@@ -11,7 +13,7 @@ public class Main {
     public static void main(String[] args) throws Exception {
         WebAppContext webAppContext = new WebAppContext();
         webAppContext.setInitParameter("org.eclipse.jetty.servlet.Default.useFileMappedBuffer", "false");
-//        webAppContext.addServlet(HelloServlet.class, "/api/*");
+//        webAppContext.addServlet(io.github.mattrandom.hello.HelloServlet.class, "/api/*");
         webAppContext.setResourceBase("src/main/webapp");
         webAppContext.setContextPath("/");
 
