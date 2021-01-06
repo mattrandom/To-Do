@@ -8,7 +8,7 @@
           crossorigin="anonymous">
 </head>
 <body>
-    <form id="welcome" class="pure-form" style="width: 40%; margin: 0 auto">
+    <form id="welcomeForm" class="pure-form" style="width: 40%; margin: 0 auto">
         <input type="text" name="name" class="pure-input-rounded" placeholder="name"/>
         <label class="pure-radio">
             <input type="radio" name="lang" value="1" checked="" /> 🇺🇸</label>
@@ -16,15 +16,24 @@
             <input type="radio" name="lang" value="2" /> 🇵🇱</label>
         <button id="btn" class="pure-button pure-button-primary">Submit</button>
     </form>
+    <div id="welcome" style="width: 40%; margin: 0 auto"></div>
     <script>
-        const form = document.getElementById('welcome');
+        const divResp = document.getElementById('welcome');
+        const form = document.getElementById('welcomeForm');
         document.getElementById('btn').addEventListener('click', (event) => {
             event.preventDefault();
             const formObj = {
                 name: form.elements.name.value,
                 lang: form.elements.lang.value
             };
-            alert(new URLSearchParams(formObj));
+
+            fetch('http://localhost:8080/api?' + new URLSearchParams(formObj))
+                .then(response => response.text())
+                .then((text) => {
+                divResp.innerHTML = `
+                    <h1>${text}</h1>
+                `;
+            });
         });
     </script>
 </body>
