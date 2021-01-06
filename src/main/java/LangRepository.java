@@ -9,11 +9,11 @@ public class LangRepository {
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction transaction = session.beginTransaction();
 
-        Lang result = session.get(Lang.class, id);
+        Optional<Lang> result = Optional.ofNullable(session.get(Lang.class, id));
 
         transaction.commit();
         session.close();
 
-        return Optional.ofNullable(result);
+        return result;
     }
 }
