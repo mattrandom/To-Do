@@ -33,6 +33,7 @@
 
         <!-- Names the annotated entity class -->
         <mapping class="io.github.mattrandom.lang.Lang"/>
+        <mapping class="io.github.mattrandom.todo.Todo"/>
 
     </session-factory>
 
