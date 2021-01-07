@@ -23,7 +23,7 @@ public class HelloServiceTest {
         HelloService SUT = alwaysReturningHelloRepository();
 
         // when
-        String result = SUT.prepareGreeting(null, "-1");
+        String result = SUT.prepareGreeting(null, -1);
 
         // then
         assertThat(result, is(WELCOME + " " + HelloService.FALLBACK_NAME + "!"));
@@ -37,7 +37,7 @@ public class HelloServiceTest {
         HelloService SUT = alwaysReturningHelloRepository();
 
         // when
-        String result = SUT.prepareGreeting(name, "-1");
+        String result = SUT.prepareGreeting(name, -1);
 
         // then
         assertThat(result, is(WELCOME + " " + name + "!"));
@@ -56,7 +56,7 @@ public class HelloServiceTest {
         HelloService SUT = new HelloService(repositoryMock);
 
         // when
-        String result = SUT.prepareGreeting(null, "-1");
+        String result = SUT.prepareGreeting(null, -1);
 
         // then
         assertThat(result, is(HelloService.FALLBACK_LANG.getWelcomeMsg() + " " + HelloService.FALLBACK_NAME + "!"));
@@ -76,19 +76,19 @@ public class HelloServiceTest {
         assertThat(result, is(FALLBACK_ID_WELCOME + " " + HelloService.FALLBACK_NAME + "!"));
     }
 
-    @Test
-    @DisplayName("Should return greeting with 'fallbackIdWelcome' when 'lang' param is non-numeric")
-    public void test_prepareGreeting_textLang_returnsGreetingWithFallbackIdLang() {
-        // given
-        LangRepository repositoryMock = fallbackLangIdRepository();
-        HelloService SUT = new HelloService(repositoryMock);
-
-        // when
-        String result = SUT.prepareGreeting(null, "abc");
-
-        // then
-        assertThat(result, is(FALLBACK_ID_WELCOME + " " + HelloService.FALLBACK_NAME + "!"));
-    }
+//    @Test
+//    @DisplayName("Should return greeting with 'fallbackIdWelcome' when 'lang' param is non-numeric")
+//    public void test_prepareGreeting_textLang_returnsGreetingWithFallbackIdLang() {
+//        // given
+//        LangRepository repositoryMock = fallbackLangIdRepository();
+//        HelloService SUT = new HelloService(repositoryMock);
+//
+//        // when
+//        String result = SUT.prepareGreeting(null, "abc");
+//
+//        // then
+//        assertThat(result, is(FALLBACK_ID_WELCOME + " " + HelloService.FALLBACK_NAME + "!"));
+//    }
 
     private LangRepository fallbackLangIdRepository() {
         return new LangRepository() {
