@@ -33,7 +33,7 @@ public class TodoServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        logger.info("Got request with parameters " + req.getParameterMap());
+        logger.info("Got request with parameters:" + req.getParameterMap());
         resp.setContentType("application/json;charset=UTF-8");
         mapper.writeValue(resp.getOutputStream(), repository.findAll());
     }
@@ -49,5 +49,13 @@ public class TodoServlet extends HttpServlet {
         } catch (NumberFormatException e) {
             logger.warn("Wrong path used: " + pathInfo);
         }
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        logger.info("Got request with parameters: " + req.getParameterMap());
+        Todo newTodo = mapper.readValue(req.getInputStream(), Todo.class);
+        resp.setContentType("application/json;charset=UTF-8");
+        mapper.writeValue(resp.getOutputStream(), repository.addTodo(newTodo));
     }
 }

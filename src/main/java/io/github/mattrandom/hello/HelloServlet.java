@@ -32,7 +32,7 @@ public class HelloServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        logger.info("Got request with parameters " + req.getParameterMap());
+        logger.info("Got request with parameters: " + req.getParameterMap());
         String name = req.getParameter(NAME_PARAM);
         String lang = req.getParameter(LANG_PARAM);
         Integer langId = null;

@@ -32,4 +32,16 @@ class TodoRepository {
 
         return result;
     }
+
+    Todo addTodo(Todo newTodo) {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction transaction = session.beginTransaction();
+
+        session.persist(newTodo);
+
+        transaction.commit();
+        session.close();
+
+        return newTodo;
+    }
 }
