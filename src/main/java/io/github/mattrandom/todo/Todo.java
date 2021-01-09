@@ -40,7 +40,7 @@ class Todo {
         this.text = text;
     }
 
-    public Boolean getDone() {
+    public boolean isDone() {
         return done;
     }
 
